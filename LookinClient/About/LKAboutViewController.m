@@ -94,4 +94,8 @@
     });
 }
 
+- (void)mouseDown:(NSEvent *)event {
+    [self.view.window performWindowDragWithEvent: event];
+}
+
 @end

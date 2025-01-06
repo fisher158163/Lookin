@@ -13,9 +13,18 @@
 @implementation LKPreferenceWindowController
 
 - (instancetype)init {
-    LKWindow *window = [[LKWindow alloc] initWithContentRect:NSMakeRect(0, 0, 600, 380) styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|NSWindowStyleMaskMiniaturizable backing:NSBackingStoreBuffered defer:YES];
+    LKWindow *window = [[LKWindow alloc] initWithContentRect: NSMakeRect(0, 0, 600, 380)
+                                                   styleMask: NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable
+                                                     backing: NSBackingStoreBuffered
+                                                       defer: YES];
     window.movableByWindowBackground = YES;
     window.title = NSLocalizedString(@"Preferences", nil);
+    
+    window.titlebarAppearsTransparent = YES;
+    window.movable = YES;
+    window.movableByWindowBackground = YES;
+    [window standardWindowButton: NSWindowZoomButton].hidden = YES;
+    
     [window center];
     
     if (self = [self initWithWindow:window]) {

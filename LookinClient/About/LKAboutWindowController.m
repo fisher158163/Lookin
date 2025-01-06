@@ -20,8 +20,17 @@
     CGFloat width = 500;
     CGFloat height = width * 0.54;
     
-    LKWindow *window = [[LKWindow alloc] initWithContentRect:NSMakeRect(0, 0, width, height) styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:YES];
+    LKWindow *window = [[LKWindow alloc] initWithContentRect: NSMakeRect(0, 0, width, height)
+                                                   styleMask: NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskFullSizeContentView
+                                                     backing: NSBackingStoreBuffered
+                                                       defer: YES];
+   
+    window.titlebarAppearsTransparent = YES;
+    window.movable = YES;
     window.movableByWindowBackground = YES;
+    [window standardWindowButton: NSWindowZoomButton].hidden = YES;
+    [window standardWindowButton: NSWindowMiniaturizeButton].hidden = YES;
+    
     [window center];
     
     if (self = [self initWithWindow:window]) {
@@ -31,7 +40,5 @@
     }
     return self;
 }
-
-
 
 @end

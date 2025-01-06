@@ -17,10 +17,17 @@
 @implementation LKLaunchWindowController
 
 - (instancetype)init {
-    LKWindow *window = [[LKWindow alloc] initWithContentRect:NSMakeRect(0, 0, 252, 400) styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskFullSizeContentView backing:NSBackingStoreBuffered defer:YES];
+    LKWindow *window = [[LKWindow alloc] initWithContentRect: NSMakeRect(0, 0, 252, 400)
+                                                   styleMask: NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskFullSizeContentView
+                                                     backing: NSBackingStoreBuffered
+                                                       defer: YES];
     window.backgroundColor = [NSColor clearColor];
     window.titlebarAppearsTransparent = YES;
+    
+    window.movable = YES;
     window.movableByWindowBackground = YES;
+    [window standardWindowButton: NSWindowZoomButton].hidden = YES;
+    
     [window center];
 
     if (self = [self initWithWindow:window]) {
